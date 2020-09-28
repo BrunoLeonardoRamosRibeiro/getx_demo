@@ -10,6 +10,9 @@ class HomeController extends GetxController {
   List<User> _users = [];
   List<User> get users => _users;
 
+  bool _loading = true;
+  bool get loading => _loading;
+
   void increment() {
     this._counter++;
     update(['text']);
@@ -18,6 +21,7 @@ class HomeController extends GetxController {
   Future<void> loadUsers() async {
     final data = await UsersApi.instance.getUsers(1);
     this._users = data;
+    this._loading = false;
     update(['users']);
   }
 
@@ -31,5 +35,6 @@ class HomeController extends GetxController {
   void onReady() {
     super.onReady();
     print("Iniciamos o onRead");
+    this.loadUsers();
   }
 }
