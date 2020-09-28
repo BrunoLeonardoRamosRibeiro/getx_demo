@@ -1,12 +1,24 @@
 import 'package:get/get.dart';
+import 'package:getx_demo/api/users_api.dart';
+import 'package:getx_demo/models/user.dart';
 
-class HomeController extends GetxController{
+class HomeController extends GetxController {
   int _counter = 0;
+
   int get counter => _counter;
 
-  void increment(){
+  List<User> _users = [];
+  List<User> get users => _users;
+
+  void increment() {
     this._counter++;
-    update();
+    update(['text']);
+  }
+
+  Future<void> loadUsers() async {
+    final data = await UsersApi.instance.getUsers(1);
+    this._users = data;
+    update(['users']);
   }
 
   @override
@@ -19,8 +31,5 @@ class HomeController extends GetxController{
   void onReady() {
     super.onReady();
     print("Iniciamos o onRead");
-
-
   }
-
 }
