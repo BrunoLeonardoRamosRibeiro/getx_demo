@@ -9,4 +9,18 @@ class HomeController extends GetxController{
     update();
   }
 
+  @override
+  void onInit() {
+    super.onInit();
+    print("Iniciamos o initState");
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    print("Iniciamos o onRead");
+
+
+  }
+
 }
