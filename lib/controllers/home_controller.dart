@@ -39,7 +39,10 @@ class HomeController extends GetxController {
     this.loadUsers();
   }
 
-  showUserProfile(User user){
-    Get.to(ProfilePage(), arguments: user);
+  Future showUserProfile(User user) async{
+    final result = await Get.to(ProfilePage(), arguments: user);
+    if (result != null){
+      print ("Resultado: $result");
+    }
   }
 }
