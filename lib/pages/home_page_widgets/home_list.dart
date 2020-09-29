@@ -21,6 +21,9 @@ class HomeList extends StatelessWidget {
             return ListTile(
               title: Text(user.firstName),
               subtitle: Text(user.email),
+              onTap: (){
+                controller.showUserProfile(user);
+              },
             );
           },
         );

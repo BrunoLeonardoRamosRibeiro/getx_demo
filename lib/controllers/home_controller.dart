@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:getx_demo/api/users_api.dart';
 import 'package:getx_demo/models/user.dart';
+import 'package:getx_demo/pages/profile_page.dart';
 
 class HomeController extends GetxController {
   int _counter = 0;
@@ -36,5 +37,9 @@ class HomeController extends GetxController {
     super.onReady();
     print("Iniciamos o onRead");
     this.loadUsers();
+  }
+
+  showUserProfile(User user){
+    Get.to(ProfilePage(), arguments: user);
   }
 }
