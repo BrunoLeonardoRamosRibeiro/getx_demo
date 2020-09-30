@@ -10,46 +10,61 @@ class ReactivePage extends StatelessWidget {
       init: ReactiveController(),
       builder: (_) {
         return Scaffold(
-          body: Obx(
-            () => ListView(
-              children: _.mapItems.values
-                  .map((e) => ListTile(
-                        title: Text(e),
-                        trailing: IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: ()=> _.removeMapItem(e),
-                        ),
-                      ))
-                  .toList(),
-            ),
-          ),
-          floatingActionButton: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FloatingActionButton(
-                  heroTag: 'add',
-                  onPressed: () {
-                    //_.increment();
-                    //_.addItem();
-                    _.addMapItem();
-                  },
-                  child: Icon(Icons.add),
-                ),
+              Obx(
+                () => Text("age ${_.myPet.age}"),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FloatingActionButton(
-                  heroTag: 'date',
-                  onPressed: () {
-                    _.getDate();
-                  },
-                  child: Icon(Icons.calendar_today),
-                ),
+              FlatButton(
+                onPressed: (){
+                  _.setPetAge(_.myPet.age + 1);
+                },
+                child: Text('set age'),
               ),
             ],
           ),
+
+//          body: Obx(
+//            () => ListView(
+//              children: _.mapItems.values
+//                  .map((e) => ListTile(
+//                        title: Text(e),
+//                        trailing: IconButton(
+//                          icon: Icon(Icons.delete),
+//                          onPressed: ()=> _.removeMapItem(e),
+//                        ),
+//                      ))
+//                  .toList(),
+//            ),
+//          ),
+//          floatingActionButton: Row(
+//            mainAxisAlignment: MainAxisAlignment.end,
+//            children: [
+//              Padding(
+//                padding: const EdgeInsets.all(8.0),
+//                child: FloatingActionButton(
+//                  heroTag: 'add',
+//                  onPressed: () {
+//                    //_.increment();
+//                    //_.addItem();
+//                    _.addMapItem();
+//                  },
+//                  child: Icon(Icons.add),
+//                ),
+//              ),
+//              Padding(
+//                padding: const EdgeInsets.all(8.0),
+//                child: FloatingActionButton(
+//                  heroTag: 'date',
+//                  onPressed: () {
+//                    _.getDate();
+//                  },
+//                  child: Icon(Icons.calendar_today),
+//                ),
+//              ),
+//            ],
+//          ),
         );
       },
     );
