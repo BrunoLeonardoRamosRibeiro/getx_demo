@@ -5,6 +5,7 @@ class ReactiveController extends GetxController {
   RxString currentDate = ''.obs;
 
   RxList<String> items = List<String>().obs;
+  RxMap<String, dynamic> mapItems = Map<String, dynamic>().obs;
 
   void increment(){
      counter.value++;
@@ -16,6 +17,19 @@ class ReactiveController extends GetxController {
 
   void addItem(){
     items.add(DateTime.now().toString());
+  }
+
+  void removeItem(int index){
+    items.removeAt(index);
+  }
+
+  void addMapItem(){
+    final String key = DateTime.now().toString();
+    mapItems.add(key, key);
+  }
+
+  void removeMapItem(String key){
+    mapItems.remove(key);
   }
 
 }

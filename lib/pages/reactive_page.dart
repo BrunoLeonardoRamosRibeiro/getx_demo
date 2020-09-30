@@ -9,32 +9,18 @@ class ReactivePage extends StatelessWidget {
     return GetBuilder<ReactiveController>(
       init: ReactiveController(),
       builder: (_) {
-
-
         return Scaffold(
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Obx(
-                  () {
-                    print('Reactive');
-                    return Text(
-                      "${_.counter.value}",
-                      style: TextStyle(fontSize: 30),
-                    );
-                  },
-                ),
-                Obx(
-                  () {
-                    print('Reactive Data');
-                    return Text(
-                      "${_.currentDate.value}",
-                      style: TextStyle(fontSize: 30),
-                    );
-                  },
-                ),
-              ],
+          body: Obx(
+            () => ListView(
+              children: _.mapItems.values
+                  .map((e) => ListTile(
+                        title: Text(e),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: ()=> _.removeMapItem(e),
+                        ),
+                      ))
+                  .toList(),
             ),
           ),
           floatingActionButton: Row(
@@ -45,7 +31,9 @@ class ReactivePage extends StatelessWidget {
                 child: FloatingActionButton(
                   heroTag: 'add',
                   onPressed: () {
-                    _.increment();
+                    //_.increment();
+                    //_.addItem();
+                    _.addMapItem();
                   },
                   child: Icon(Icons.add),
                 ),
