@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget {
       init: HomeController(),
       builder: (controller) {
         print('Build Home');
+
         return Scaffold(
           body: HomeList(),
           floatingActionButton: FloatingActionButton(
