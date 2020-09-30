@@ -64,6 +64,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0-nullsafety"
+  faker:
+    dependency: "direct main"
+    description:
+      name: faker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -80,7 +87,7 @@ packages:
       name: get
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.11.1"
+    version: "3.12.1"
   get_core:
     dependency: transitive
     description:
